@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ru"> <!-- Не забывай менять язык, если контент русский -->
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Технический блог - Статья</title>
+</head>
+<body>
+
+  <header>
+    <!-- FIX: Ссылка не должна быть пустой -->
+    <a href="/" class="logo">TechBlog</a>
+    
+    <nav class="nav">
+      <!-- FIX: Обязательная обертка ul для списка -->
+      <ul class="nav__list">
+        <li class="nav__item"><a href="/articles">Статьи</a></li>
+        <li class="nav__item"><a href="/about">О нас</a></li>
+        <li class="nav__item"><a href="/contacts">Контакты</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Основной контент страницы -->
+    <article>
+      <header>
+        <!-- Заголовок относится к статье, h1 уместен здесь -->
+        <h1>Как мы переписали легаси на React</h1>
+        <p>
+          Опубликовано: 
+          <time datetime="2023-10-15">15 октября 2023</time>
+          Автор: <span>Иван Иванов</span>
+        </p>
+      </header>
+
+      <img src="path/to/image.jpg" alt="Схема архитектуры нашего приложения" />
+
+      <p class="lead">Вводный абзац (Lead text). Lorem ipsum dolor sit amet...</p>
+      
+      <h2>Проблема с производительностью</h2>
+      <p>Основной текст статьи... Lorem ipsum...</p>
+
+      <h2>Наше решение</h2>
+      <p>Текст решения...</p>
+
+      <!-- 
+         ASIDE внутри ARTICLE означает, что контент 
+         напрямую связан с этой статьей (например, сноски, 
+         глоссарий или био автора этой конкретной статьи).
+      -->
+      <aside class="author-bio">
+        <h3>Об авторе</h3>
+        <!-- FIX: blockquote убрал, так как это не цитата -->
+        <p>Senior Frontend Developer с 10-летним стажем. Любит котиков и чистый код.</p>
+      </aside>
+    </article>
+
+    <!-- 
+       Второй ASIDE (вне article) - это боковая панель сайта.
+       Она косвенно связана с контентом (похожие статьи, реклама).
+    -->
+    <aside class="sidebar">
+      <h3>Читайте также</h3>
+      <ul>
+        <li><a href="#">Введение в TypeScript</a></li>
+        <li><a href="#">CSS Grid vs Flexbox</a></li>
+      </ul>
+    </aside>
+  </main>
+
+  <!-- FIX: Добавлен подвал -->
+  <footer>
+    <p>&copy; 2023 Tech Company. Все права защищены.</p>
+    <address>contact@techblog.com</address>
+  </footer>
+
+</body>
+</html>
