@@ -14,12 +14,11 @@ AI tools as learning assistants, reviewers, and discussion partners.
 
 ## 📌 Repository Structure
 
-- `book-notes/` — chapter-by-chapter notes and explanations
-- `examples/` — code examples from the book (with my own comments)
-- `experiments/` — modern CSS techniques and explorations beyond the book
-- `projects/` — small practical projects to apply the concepts
-- `ai-prompts/` — effective prompts and AI-assisted explanations
-- `notes/` — additional learning notes and references
+- `notes/` — concise notes with the most important concepts from each chapter (key ideas, explanations, and takeaways).
+
+- `practice/` — hands-on practice for each chapter:
+  - `task.md` — the practice assignment and requirements
+  - `solution/` — completed solution files for the task
 
 ---
 
