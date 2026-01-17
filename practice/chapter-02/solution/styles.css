@@ -1,0 +1,67 @@
+/* --- Base Styles (Mobile First) --- */
+/* Никаких медиазапросов. Это стили для iPhone SE и старых Android */
+
+.hero {
+  padding: 2rem 1rem;
+  text-align: center;
+  /* Мы НЕ пишем display: flex здесь. 
+     Пусть блоки встают друг под другом естественно. */
+}
+
+.hero__title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.hero__desc {
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+.hero__image {
+  max-width: 100%; /* Чтобы картинка не порвала экран мобилки */
+  height: auto;
+  margin-top: 2rem; /* Отступ сверху на мобильном */
+}
+
+.btn {
+  display: inline-block;
+  width: 100%; /* На мобильном кнопку удобно нажимать пальцем во всю ширину */
+  padding: 1rem;
+  background-color: blue;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+
+/* --- Desktop Styles (Progressive Enhancement) --- */
+/* Усложняем макет только если экран позволяет */
+
+@media (min-width: 768px) {
+  .hero {
+    display: flex; /* ВКЛЮЧАЕМ сетку только сейчас */
+    align-items: center; /* Центрируем вертикально */
+    justify-content: space-between; /* Разносим по краям */
+    text-align: left; /* Возвращаем текст влево */
+    padding: 4rem 2rem;
+  }
+
+  .hero__content {
+    width: 50%; /* Занимаем половину экрана */
+    padding-right: 2rem; /* Воздух между текстом и картинкой */
+  }
+
+  .hero__title {
+    font-size: 3rem;
+  }
+
+  .hero__image {
+    width: 50%;
+    margin-top: 0; /* Убираем отступ, он больше не нужен */
+  }
+
+  .btn {
+    width: auto; /* Возвращаем кнопке естественный размер */
+  }
+}
