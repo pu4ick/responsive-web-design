@@ -1,0 +1,92 @@
+/* --- ### Решение 1: Адаптивная карточка товара (Single Component) --- */
+.product-card {
+  display: flex;
+  flex-direction: column; /* Элементы друг под другом */
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  overflow: hidden; /* Обрезаем картинку по скруглению углов */
+  max-width: 400px;
+  margin: 0 auto; /* Центрируем саму карточку */
+}
+
+/* Картинка должна быть резиновой внутри picture */
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Заполняем область без искажений */
+  display: block;    /* Убираем нижний отступ (баг строчных элементов) */
+}
+
+.product-card__content {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  gap: 1rem; /* Расстояние между заголовком, текстом и футером */
+  flex-grow: 1; /* Если карточку растянут по высоте, контент займет место */
+}
+
+.product-card__footer {
+  margin-top: auto; /* "Магический" отступ: прижимает футер к самому низу */
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- Desktop Styles --- */
+@media (min-width: 600px) {
+  .product-card {
+    flex-direction: row; /* Меняем ось на горизонтальную */
+    max-width: 800px;    /* Разрешаем карточке стать шире */
+  }
+
+  /* Управляем шириной картинки */
+  .product-card__media {
+    width: 250px;    /* Фиксированная ширина */
+    flex-shrink: 0;  /* ЗАПРЕЩАЕМ сжиматься, если места мало */
+  }
+}
+
+
+
+/* ### Решение 2: Секция «Команда» (Grid-like Flexbox) */
+
+.team-list {
+  display: flex;
+  flex-wrap: wrap; /* Разрешаем перенос на новую строку */
+  gap: 1.5rem;     /* Отступы между карточками (и сбоку, и снизу) */
+}
+
+.teammate {
+  /* 
+     Shorthand flex: grow shrink basis 
+     1 = Расти (занимай свободное место)
+     1 = Сжимайся (если экран меньше 300px)
+     300px = Идеальная ширина, от которой пляшем
+  */
+  flex: 1 1 300px;
+
+  /* Декор */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  text-align: center;
+  padding: 1.5rem;
+  background-color: #fff;
+}
+
+.teammate__photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%; /* Круглое фото */
+  object-fit: cover;
+  margin-bottom: 1rem;
+}
+
+.teammate__name {
+  margin: 0 0 0.5rem 0;
+  font-size: 1.25rem;
+}
+
+.teammate__role {
+  color: #666;
+  margin: 0;
+}

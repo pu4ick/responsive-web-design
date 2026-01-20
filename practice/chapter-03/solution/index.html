@@ -1,0 +1,66 @@
+<!-- ### Решение 1: Адаптивная карточка товара (Single Component)
+  **Задача:** Сменить направление оси (вертикально -> горизонтально) и управлять распределением места. -->
+
+<article class="product-card">
+  <!-- 
+    picture является flex-элементом. 
+    Мы даем ему класс, чтобы управлять его шириной.
+  -->
+  <picture class="product-card__media">
+    <!-- Широкая картинка для десктопа -->
+    <source media="(min-width: 600px)" srcset="https://via.placeholder.com/600x300">
+    <!-- Квадратная для мобильного (fallback) -->
+    <img class="product-card__img" src="https://via.placeholder.com/300x300" alt="iPhone 16 Pro">
+  </picture>
+  
+  <div class="product-card__content">
+    <h2 class="product-card__title">iPhone 16 Pro</h2>
+    <p class="product-card__desc">
+      Мощный титановый корпус и передовая камера. 
+      Купите сегодня и получите чехол в подарок.
+    </p>
+    
+    <!-- Футер карточки (цена + кнопка) -->
+    <div class="product-card__footer">
+      <span class="product-card__price">999 €</span>
+      <button class="btn btn--primary">Купить</button>
+    </div>
+  </div>
+</article>
+
+<!-- ### Решение 2: Секция «Команда» (Grid-like Flexbox)
+**Задача:** Создать список карточек, которые переносятся на новую строку и занимают всё доступное пространство. -->
+
+<section class="team-section">
+  <!-- Контейнер для сетки -->
+  <div class="team-list">
+    
+    <!-- Карточка 1 -->
+    <article class="teammate">
+      <img class="teammate__photo" src="https://placehold.co/300x300" alt="Иван Иванов">
+      <div class="teammate__info">
+        <h3 class="teammate__name">Иван Иванов</h3>
+        <p class="teammate__role">Frontend Developer</p>
+      </div>
+    </article>
+
+    <!-- Карточка 2 -->
+    <article class="teammate">
+      <img class="teammate__photo" src="https://placehold.co/300x300" alt="Анна Петрова">
+      <div class="teammate__info">
+        <h3 class="teammate__name">Анна Петрова</h3>
+        <p class="teammate__role">UI/UX Designer</p>
+      </div>
+    </article>
+
+    <!-- Карточка 3 -->
+    <article class="teammate">
+      <img class="teammate__photo" src="https://placehold.co/300x300" alt="Петр Сидоров">
+      <div class="teammate__info">
+        <h3 class="teammate__name">Петр Сидоров</h3>
+        <p class="teammate__role">Backend Developer</p>
+      </div>
+    </article>
+
+  </div>
+</section>
