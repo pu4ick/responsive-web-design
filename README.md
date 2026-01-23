@@ -9,6 +9,20 @@ from understanding key concepts to applying them through practice.
 
 ---
 
+## ⏳ Learning Timeline
+
+- Total lessons: 10
+- Lessons completed: 3
+- Current lesson: Lesson 4
+- Estimated pace: ~3 days per lesson
+- Buffer for unexpected delays: 4–6 days
+- Planned completion date: **February 19, 2026**
+
+This timeline prioritizes deep understanding, hands-on practice,
+and sustainable learning rather than speed.
+
+---
+
 ## 📌 Repository Structure
 
 - `notes/`  
