@@ -1,0 +1,111 @@
+dashboard-grid {
+  display: grid;
+  gap: 1.5rem;
+  /* 
+     Магическая формула адаптивности:
+     1. Создай столько колонок, сколько влезет (auto-fit).
+     2. Каждая колонка минимум 250px.
+     3. Если есть место, растяни их на равные доли (1fr).
+  */
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+}
+
+.widget {
+  background: white;
+  border: 1px solid #e0e0e0;
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+
+  /* Гарантирует, что все виджеты будут одинаковой высоты */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.widget__title {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0 0 0.5rem 0;
+  /* Сброс дефолтных отступов */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.widget__value {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+
+
+/* Дополнительное задание: Секция «Популярное» (Bento Grid) */
+
+.bento-grid {
+  display: grid;
+  gap: 1rem;
+  /* На мобильном 1 колонка */
+  grid-template-columns: 1fr;
+  /* Опционально: автоматическая высота рядов на мобильном */
+  grid-auto-rows: minmax(200px, auto);
+}
+
+/* Общие стили для карточек */
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  /* Критически важно для гридов с картинками: */
+  display: flex;
+}
+
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.card:hover img {
+  transform: scale(1.05);
+  /* Эффект зума при наведении */
+}
+
+/* Desktop */
+@media (min-width: 768px) {
+  .bento-grid {
+    /* 4 равные колонки */
+    grid-template-columns: repeat(4, 1fr);
+    /* Фиксированная высота ряда для ровной сетки */
+    grid-auto-rows: 200px;
+    /* MAGIC: Заполняй дырки мелкими элементами, если они влезают */
+    grid-auto-flow: dense;
+  }
+
+  .card--featured {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .card--tall {
+    grid-row: span 2;
+    /* grid-column: span 1 (по умолчанию) */
+  }
+
+  .card--wide {
+    grid-column: span 2;
+  }
+}
+
+/* **1. Управление контентом (Images)**
+Сейчас твои картинки ведут себя как обычные картинки — они сохраняют свои пропорции и размер. Если ячейка грида станет `200px` высотой, а картинка `600px`, она вылезает за пределы или сплющится.
+**Fix:** Всегда добавляй этот сниппет для картинок в гридах/флексах:
+```css
+img {
+width: 100%;
+height: 100%;
+object-fit: cover; /* Ключевое свойство: обрезает лишнее, сохраняя пропорции 
+display: block;
+} 
+*/

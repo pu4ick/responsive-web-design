@@ -1,0 +1,67 @@
+<!-- ### Senior Deep Dive: `auto-fit` vs `auto-fill`
+
+Представь, что у тебя широкий монитор (влезает 4 колонки), но у тебя всего **2 виджета**.
+
+1.  **`auto-fit` (То, что использовал ты):**
+    Браузер видит, что есть место для 4 колонок, но виджетов всего 2. Он думает: «Зачем мне пустые колонки?» — и схлопывает их.
+    **Результат:** Твои 2 виджета растянутся и займут всю ширину экрана (станут очень широкими). Это поведение «растянуть контент».
+
+2.  **`auto-fill` (Заполни пустотой):**
+    Браузер видит место для 4 колонок. Он создает 2 колонки для твоих виджетов, а оставшееся место оставляет под **пустые призрачные колонки**.
+    **Результат:** Твои 2 виджета останутся шириной по 250px (или чуть больше), а справа будет пустое место.
+
+> **Правило:** Для раскладки карточек мы почти всегда используем **`auto-fit`**, чтобы они красиво заполняли экран. -->
+
+
+<section class="dashboard-grid">
+  <article class="widget">
+    <h3 class="widget__title">Total Sales</h3>
+    <p class="widget__value">$12,300</p>
+  </article>
+
+  <article class="widget">
+    <h3 class="widget__title">Total Sales</h3>
+    <p class="widget__value">$12,300</p>
+  </article>
+
+  <article class="widget">
+    <h3 class="widget__title">Total Sales</h3>
+    <p class="widget__value">$12,300</p>
+  </article>
+
+  <article class="widget">
+    <h3 class="widget__title">Total Sales</h3>
+    <p class="widget__value">$12,300</p>
+  </article>
+
+  <article class="widget">
+    <h3 class="widget__title">Total Sales</h3>
+    <p class="widget__value">$12,300</p>
+  </article>
+</section>
+
+
+
+<!-- Дополнительное задание: Секция «Популярное» (Bento Grid) -->
+
+<section class="bento-grid">
+  <article class="card card--featured">
+    <img src="https://placehold.co/600x600/orange/white?text=Featured" alt="Main">
+  </article>
+
+  <article class="card card--tall">
+    <img src="https://placehold.co/300x600/purple/white?text=Tall" alt="Tall">
+  </article>
+
+  <article class="card card--wide">
+    <img src="https://placehold.co/600x300/green/white?text=Wide" alt="Wide">
+  </article>
+
+  <article class="card">
+    <img src="https://placehold.co/300x300/333/white?text=News" alt="News">
+  </article>
+
+  <article class="card">
+    <img src="https://placehold.co/300x300/333/white?text=News" alt="News">
+  </article>
+</section>
