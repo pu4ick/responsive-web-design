@@ -1,0 +1,213 @@
+/* ### Практическое задание (SaaS Pricing Table) */
+
+
+:root {
+  --hue: 220; /* Синий оттенок */
+  --color-primary: hsl(var(--hue), 70%, 50%);
+  --color-bg-light: hsl(var(--hue), 70%, 96%);
+  --color-text: hsl(var(--hue), 10%, 20%);
+}
+
+body {
+  font-family: sans-serif;
+  color: var(--color-text);
+}
+
+.pricing {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center; /* Чтобы карточки выровнялись по центру высоты */
+  padding: 2rem;
+  flex-wrap: wrap;
+}
+
+.plan {
+  border: 2px solid #eee;
+  border-radius: 16px;
+  padding: 2rem;
+  width: 300px;
+  transition: 0.3s ease;
+  background: white;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Логика HSL: меняем фон и границу, используя одну переменную hue */
+.plan:hover {
+  border-color: var(--color-primary);
+  background-color: var(--color-bg-light);
+  transform: translateY(-5px); /* Легкий подъем вверх */
+}
+
+/* Акцент на популярном тарифе через атрибут */
+.plan[data-popular="true"] {
+  border-color: var(--color-primary);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  transform: scale(1.05); /* Он всегда чуть больше остальных */
+}
+
+.plan-title {
+  /* clamp(min, val, max) - безопасная резина */
+  font-size: clamp(1.5rem, 1rem + 2vw, 2rem); 
+  margin-top: 0;
+  text-align: center;
+}
+
+.plan-price {
+  font-size: 3rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--color-primary);
+  margin-bottom: 2rem;
+}
+
+.features {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 2rem 0;
+}
+
+/* Зебра: используем прозрачность, чтобы подходило под любой фон */
+.features li:nth-child(odd) {
+  background-color: rgba(0, 0, 0, 0.03); 
+}
+
+.features li {
+  padding: 0.75rem;
+  /* Граница снизу всем, КРОМЕ последнего */
+  border-bottom: 1px solid #eee; 
+}
+.features li:last-child {
+  border-bottom: none;
+}
+
+/* Галочка через псевдоэлемент */
+.features li::before {
+  content: "✔";
+  color: var(--color-primary);
+  margin-right: 0.5rem;
+  font-weight: bold;
+}
+
+.btn {
+  margin-top: auto; /* Прижать кнопку к низу */
+  padding: 1rem;
+  border: 1px solid var(--color-primary);
+  background: transparent;
+  color: var(--color-primary);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: white;
+}
+
+
+
+/* ### Дополнительное задание: Виджет "Центр уведомлений" */
+
+:root {
+  /* Палитра оттенков (Hue) */
+  --hue-info: 210;    /* Синий (Azure) */
+  --hue-success: 145; /* Зеленый (Mint) */
+  --hue-warning: 35;  /* Оранжевый (Amber) */
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  color: #333;
+  background-color: #f4f4f9;
+  padding: 2rem;
+}
+
+.notifications {
+  display: flex;
+  flex-direction: column;
+  max-width: 600px; /* Чуть шире для текста */
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  background: white; /* Подложка для списка */
+}
+
+.alert {
+  /* 1. Дефолтная тема (Info) */
+  --hue: var(--hue-info);
+  
+  /* 2. Генерация цветов из одной переменной */
+  background-color: hsl(var(--hue), 90%, 98%); /* Очень светлый фон */
+  color: hsl(var(--hue), 30%, 15%);            /* Очень темный текст (для контраста) */
+  border-left: 4px solid hsl(var(--hue), 80%, 45%); /* Яркий акцент слева */
+  
+  border-bottom: 1px solid hsl(var(--hue), 20%, 92%); /* Разделитель */
+  
+  padding: 1.25rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+/* 3. Темизация через атрибуты */
+.alert[data-type="success"] {
+  --hue: var(--hue-success);
+}
+.alert[data-type="warning"] {
+  --hue: var(--hue-warning);
+}
+
+.alert:last-child {
+  border-bottom: none;
+}
+
+.alert__content {
+  flex-grow: 1; /* Контент занимает всё место, толкая крестик вправо */
+}
+
+.alert__title {
+  margin: 0 0 0.5rem 0;
+  color: hsl(var(--hue), 90%, 25%); /* Заголовок насыщеннее основного текста */
+  font-size: 1rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+}
+
+/* Декоративная точка перед заголовком */
+.alert__title::before {
+  content: "";
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: hsl(var(--hue), 80%, 45%);
+  margin-right: 0.75rem;
+  flex-shrink: 0; /* Чтобы точка не сжималась, если заголовок длинный */
+}
+
+.alert__content p {
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: hsl(var(--hue), 10%, 30%); /* Текст описания чуть бледнее */
+}
+
+.alert__close {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  line-height: 0.8;
+  padding: 0;
+  cursor: pointer;
+  color: hsl(var(--hue), 30%, 70%);
+  transition: color 0.2s;
+}
+
+.alert__close:hover {
+  color: hsl(var(--hue), 80%, 40%);
+}

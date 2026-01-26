@@ -1,0 +1,73 @@
+<!-- ### Практическое задание (SaaS Pricing Table) -->
+
+<section class="pricing">
+  <!-- Basic -->
+  <article class="plan">
+    <h2 class="plan-title">Basic</h2>
+    <div class="plan-price">$0</div>
+    <ul class="features">
+      <li>1 User</li>
+      <li>5GB Storage</li>
+      <li>Email Support</li>
+    </ul>
+    <button class="btn">Start Free</button>
+  </article>
+
+  <!-- Pro (Popular) -->
+  <article class="plan" data-popular="true">
+    <h2 class="plan-title">Pro</h2>
+    <div class="plan-price">$29</div>
+    <ul class="features">
+      <li>5 Users</li>
+      <li>50GB Storage</li>
+      <li>Priority Support</li>
+    </ul>
+    <button class="btn btn-primary">Buy Now</button>
+  </article>
+
+  <!-- Enterprise -->
+  <article class="plan">
+    <h2 class="plan-title">Enterprise</h2>
+    <div class="plan-price">$99</div>
+    <ul class="features">
+      <li>Unlimited Users</li>
+      <li>Unlimited Storage</li>
+      <li>24/7 Support</li>
+    </ul>
+    <button class="btn">Contact Us</button>
+  </article>
+</section>
+
+
+<!-- ### Дополнительное задание: Виджет "Центр уведомлений" -->
+
+<section class="notifications">
+  
+  <!-- Info: Системное сообщение -->
+  <article class="alert" data-type="info">
+    <div class="alert__content">
+      <h4 class="alert__title">Плановое обновление системы</h4>
+      <p>Завтра с 03:00 до 05:00 (UTC) серверы будут перезагружены для установки патча безопасности.</p>
+    </div>
+    <button type="button" class="alert__close" aria-label="Закрыть">×</button>
+  </article>
+
+  <!-- Success: Успешная транзакция -->
+  <article class="alert" data-type="success">
+    <div class="alert__content">
+      <h4 class="alert__title">Оплата прошла успешно</h4>
+      <p>Счет #INV-2024-001 на сумму $2,499 оплачен. Чек отправлен на accounting@company.com.</p>
+    </div>
+    <button type="button" class="alert__close" aria-label="Закрыть">×</button>
+  </article>
+
+  <!-- Warning: Критическое предупреждение -->
+  <article class="alert" data-type="warning">
+    <div class="alert__content">
+      <h4 class="alert__title">Заканчивается место на диске</h4>
+      <p>На сервере <b>app-prod-01</b> осталось менее 5% свободного места. Очистите логи или расширьте хранилище.</p>
+    </div>
+    <button type="button" class="alert__close" aria-label="Закрыть">×</button>
+  </article>
+
+</section>
