@@ -1,0 +1,36 @@
+<div class="scene">
+  <!-- Карта -->
+  <article class="card">
+    <!-- Декоративный элемент "Стекло" поверх карты -->
+    <div class="card__glass-strip"></div>
+
+    <div class="card__content">
+      <div class="card__header">
+        <div class="card__chip"></div>
+        <div class="card__logo">NeoBank</div>
+      </div>
+
+      <p class="card__number">4242 5656 3434 8842</p>
+
+      <div class="card__footer">
+        <div class="card__holder">
+          <span class="card__label">Card Holder</span>
+          <span class="card__name">IVAN BUCHIN</span>
+        </div>
+        <div class="card__date">
+          <span class="card__label">Expires</span>
+          <span class="card__value">09/28</span>
+        </div>
+      </div>
+    </div>
+  </article>
+</div>
+
+<!-- ### Ответ на вопрос защиты (Backdrop-filter vs Filter)
+
+*   **`filter: blur(10px)`**: Размывает **САМ элемент**. Если ты применишь его к `.card__glass-strip`, 
+      размоется сама белая полоска (она станет мутной кляксой), но фон под ней останется четким.
+*   **`backdrop-filter: blur(10px)`**: Размывает то, что находится **ПОЗАДИ элемента** (как матовое стекло в душевой кабине). 
+      Сама полоска остается четкой (ее границы), но градиент карты под ней становится мутным. Именно это создает эффект стекла.
+
+--- -->
