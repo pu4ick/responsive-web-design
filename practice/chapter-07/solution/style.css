@@ -1,0 +1,42 @@
+/* Базовые стили */
+.social-list {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  gap: 1.5rem;
+  padding: 0;
+}
+
+.social-link {
+  /* Базовый цвет иконок (серый) */
+  color: #888; 
+  transition: color 0.3s ease, transform 0.2s ease;
+  display: inline-block; /* Чтобы работал transform */
+}
+
+/* 
+  Самое важное:
+  SVG берет цвет из свойства color родителя (ссылки) 
+*/
+.icon {
+  width: 40px;
+  height: 40px;
+  fill: currentColor; /* Магия: залейся текущим цветом текста */
+}
+
+/* Ховер эффекты: меняем цвет текста ссылки, иконка перекрашивается сама */
+.social-link:hover {
+  transform: translateY(-3px); /* Легкий подскок */
+}
+
+.social-link--fb:hover {
+  color: #1877F2;
+}
+
+.social-link--tw:hover {
+  color: #1DA1F2; /* Или черный #000 */
+}
+
+.social-link--ig:hover {
+  color: #E4405F;
+}
