@@ -1,0 +1,157 @@
+root {
+  /*  Мягкое торможение (Smooth Ease-Out) */
+  --ease-soft: cubic-bezier(0.25, 0.8, 0.25, 1);
+  /* Плавная анимация для зума */
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #f0f2f5;
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+/* --- Карточка --- */
+.product-card {
+  position: relative;
+  max-width: 300px;
+  width: 100%;
+  background: white;
+  border-radius: 16px;
+  /* overflow: hidden здесь не нужен, чтобы тень не обрезалась,
+     но нужен для скругления углов картинки. Решим это в image-wrapper. */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+
+  /* 
+    Оптимизация производительности. 
+    Мы говорим браузеру: "Этот элемент будет двигаться, подготовь видеокарту".
+  */
+  will-change: transform;
+
+  /* Анимация подъема карточки */
+  transition: transform 0.5s var(--ease-soft),
+    box-shadow 0.5s var(--ease-soft);
+}
+
+/* Hover эффект для самой карточки */
+.product-card:hover {
+  transform: translateY(-8px);
+  /* Поднимаем вверх */
+  box-shadow: 0 20px 30px rgba(0, 0, 0, 0.15);
+  /* Тень становится больше и мягче */
+}
+
+/* --- Бейдж (Keyframe Animation) --- */
+.badge {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 10;
+  background-color: #ff4757;
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: bold;
+  text-transform: uppercase;
+
+  /* Запускаем анимацию пульсации */
+  animation: pulse 2s infinite;
+}
+
+/* Сценарий пульсации */
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba(255, 71, 87, 0);
+  }
+
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(255, 71, 87, 0);
+  }
+}
+
+/* --- Картинка (Zoom Effect) --- */
+.product-card__image-wrapper {
+  height: 250px;
+  overflow: hidden;
+  /* Обрезаем всё, что вылезет при зуме */
+  border-top-left-radius: 16px;
+  border-top-right-radius: 16px;
+}
+
+.product-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Анимируем масштаб */
+  transition: transform 0.6s var(--ease-smooth);
+}
+
+/* При наведении НА КАРТОЧКУ увеличиваем картинку */
+.product-card:hover .product-card__img {
+  transform: scale(1.1);
+  /* Зум на 10% */
+}
+
+/* --- Контент --- */
+.product-card__content {
+  padding: 20px;
+  position: relative;
+  /* Для позиционирования кнопки лайка */
+}
+
+.product-card__title {
+  margin: 0 0 8px 0;
+  font-size: 1.25rem;
+  color: #333;
+}
+
+.product-card__price {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #333;
+}
+
+/* --- Кнопка лайка (Micro-interaction) --- */
+.btn-like {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: none;
+  background: #f0f2f5;
+  color: #ccc;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  /* Плавная смена цвета и размера */
+  transition: background-color 0.2s, color 0.2s, transform 0.2s var(--ease-spring);
+}
+
+/* Hover: Кнопка краснеет */
+.btn-like:hover {
+  background: #ffe0e3;
+  color: #ff4757;
+}
+
+/* Active: Эффект нажатия (вдавливание) */
+.btn-like:active {
+  transform: scale(0.85);
+  /* Уменьшаем кнопку */
+}
